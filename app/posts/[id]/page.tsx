@@ -13,8 +13,8 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ id: post.id }));
 }
 
-export default async function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function PostDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [post, trainers] = await Promise.all([getPostById(id), getTrainerProfiles()]);
 
   if (!post) notFound();

@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   return clinics.map((clinic) => ({ id: clinic.id }));
 }
 
-export default async function ClinicDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function ClinicDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [clinic, areas, trainers] = await Promise.all([getClinicById(id), getAreas(), getTrainerProfiles()]);
 
   if (!clinic) notFound();

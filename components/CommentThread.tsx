@@ -11,7 +11,7 @@ export function CommentThread({
   trainers: TrainerProfile[];
 }) {
   if (comments.length === 0) {
-    return <div className="sfg-card text-sm text-slate-600">まだコメントはありません。</div>;
+    return <div className="sfg-card text-sm text-slate-600">まだ経験者コメントやトレーナー補足はありません。</div>;
   }
 
   return (
@@ -36,15 +36,19 @@ export function CommentThread({
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <p className="text-sm font-bold text-navy">{comment.authorName}</p>
-                  {isTrainer ? <Badge tone="teal">専門トレーナー</Badge> : <Badge>匿名選手</Badge>}
+                  {isTrainer ? <Badge tone="teal">トレーナーコメント</Badge> : <Badge>経験者コメント</Badge>}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  {trainer?.title ?? "選手コメント"} ・ {formatDateTime(comment.createdAt)}
+                  {trainer?.title ?? "自分もこうだった"} ・ {formatDateTime(comment.createdAt)}
                 </p>
               </div>
             </div>
             <p className="text-sm leading-7 text-slate-800">{comment.body}</p>
-            {isTrainer ? <div className="mt-3"><Disclaimer /></div> : null}
+            {isTrainer ? (
+              <div className="mt-3">
+                <Disclaimer text="トレーナーコメントは経験談や復帰記録への補足・注意点であり、医療診断ではありません。" />
+              </div>
+            ) : null}
           </article>
         );
       })}

@@ -10,11 +10,13 @@ export default async function PostsPage() {
     <PageShell className="max-w-3xl space-y-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-black text-navy">怪我相談一覧</h1>
-          <p className="mt-1 text-sm text-slate-600">部位や競技で絞り込み、近い相談を探せます。</p>
+          <h1 className="text-xl font-black text-navy">怪我の相談・経験談・復帰記録</h1>
+          <p className="mt-1 text-sm leading-6 text-slate-600">
+            競技、部位、復帰フェーズで絞り込み、同じ怪我をした選手の流れを探せます。
+          </p>
         </div>
         <Link href="/posts/new" className="sfg-button shrink-0 bg-teal text-white">
-          相談する
+          投稿する
         </Link>
       </div>
       <PostFilters posts={posts} />
